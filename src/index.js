@@ -42,13 +42,16 @@ function onSearch(e) {
   iterationSearch += 1;
 
   getImagesWithAxios(config,iterationSearch).then(dataImages => {
-
+     if (!dataImages) {     
+    return;
+  }
     clearImagesGallery();
     appendImagesGalleryMarkup(dataImages);
     refs.loadMoreBtn.classList.remove('is-hidden');
-
+ 
     
   });
+  
   
 }
 
@@ -71,12 +74,10 @@ function onLoadMore() {
     
     gallery.refresh();
 
-    const { height: cardHeight } = document
-  .querySelector(".gallery")
-  .firstElementChild.getBoundingClientRect();
-
+    
+const { height: cardHeight } = refs.imagesGallery.firstElementChild.getBoundingClientRect();
 window.scrollBy({
-  top: cardHeight * 3,
+  top: cardHeight * 2,
   behavior: "smooth",
 });
   });
