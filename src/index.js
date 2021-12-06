@@ -6,7 +6,8 @@ import './css/styles.css';
 
 
 const config = {
-          url: 'https://pixabay.com/api',
+          
+          url: 'http://pixabay.com/api',
           params: {
             key: '24632076-61665c6939d01412ec2d82576',
             q: '',
